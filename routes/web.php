@@ -9,3 +9,7 @@ Route::get('/', function () {
 Route::get('/main', function(){
     return view('index');
 });
+
+Route::get('/tech', function(){
+    return view('tech/index');
+})->name('tech');
