@@ -59,36 +59,48 @@
     </div>
   </section>
 
-  <!-- Admin Panel Preview -->
-  <section class="bg-white py-10 px-4 mt-10" id="admin">
-    <div class="max-w-5xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 border-b pb-2">Admin Dashboard</h2>
-    <div class="grid gap-6 grid-cols-1 md:grid-cols-2">
-      <div class="bg-gray-100 p-4 rounded shadow">
-      <h3 class="text-lg font-semibold mb-2">Post New Article</h3>
-      <form class="space-y-4">
-        <input type="text" placeholder="Title" class="w-full px-3 py-2 border rounded" />
-        <textarea placeholder="Content" class="w-full px-3 py-2 border rounded h-32"></textarea>
-        <select class="w-full px-3 py-2 border rounded">
-        <option>Choose Category</option>
-        <option>Tech</option>
-        <option>Politics</option>
-        <option>World</option>
-        </select>
-        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Publish</button>
-      </form>
+  <section class="py-10" id="sports">
+    <div class="max-w-7xl mx-auto px-4">
+    <h3 class="text-2xl font-semibold mb-6 border-b pb-2">Latest in Sports</h3>
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Card 1 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
+      <img src="https://source.unsplash.com/400x250/?football,stadium" alt="Football"
+        class="w-full h-48 object-cover" />
+      <div class="p-4">
+        <h4 class="text-lg font-bold mb-2">Champions League Final: Thrilling Win</h4>
+        <p class="text-sm text-gray-600">An epic showdown ends in a dramatic penalty shootout.</p>
       </div>
-      <div class="bg-gray-100 p-4 rounded shadow">
-      <h3 class="text-lg font-semibold mb-2">Recent Posts</h3>
-      <ul class="text-sm space-y-2">
-        <li>• Market Update – <span class="text-gray-500">2 hrs ago</span></li>
-        <li>• Tech Expo Highlights – <span class="text-gray-500">1 day ago</span></li>
-        <li>• New Political Debate – <span class="text-gray-500">3 days ago</span></li>
-      </ul>
       </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
+      <img src="https://source.unsplash.com/400x250/?cricket,bat" alt="Cricket" class="w-full h-48 object-cover" />
+      <div class="p-4">
+        <h4 class="text-lg font-bold mb-2">Asia Cup 2025: Schedule Announced</h4>
+        <p class="text-sm text-gray-600">Top teams gear up for a month-long cricket festival.</p>
+      </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
+      <img src="https://source.unsplash.com/400x250/?tennis,player" alt="Tennis" class="w-full h-48 object-cover" />
+      <div class="p-4">
+        <h4 class="text-lg font-bold mb-2">Wimbledon: Rising Star Shines Bright</h4>
+        <p class="text-sm text-gray-600">18-year-old newcomer advances to Grand Slam semifinals.</p>
+      </div>
+      </div>
+    </div>
+
+    <!-- Right-aligned "More" button -->
+    <div class="flex justify-end mt-6">
+      <a href="{{ route('sports') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
     </div>
     </div>
   </section>
+
+
+
 
 
 

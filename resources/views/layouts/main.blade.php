@@ -15,11 +15,11 @@
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="text-3xl font-bold text-red-600">dotNews</h1>
       <nav class="hidden md:flex space-x-6 text-sm font-medium">
-        <a href="#" class="hover:text-red-600">Home</a>
+        <a href="{{ route('home') }}" class="hover:text-red-600">Home</a>
         <a href="#world" class="hover:text-red-600">World</a>
         <a href="#politics" class="hover:text-red-600">Politics</a>
         <a href="{{ route('tech') }}" class="hover:text-red-600">Tech</a>
-        <a href="#admin" class="hover:text-red-600">Admin</a>
+        <a href="{{ route('sports') }}" class="hover:text-red-600">Sports</a>
       </nav>
       <!-- Search -->
       <div class="relative">
