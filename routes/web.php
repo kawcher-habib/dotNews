@@ -7,7 +7,7 @@ Route::get('/admin', function () {
 })->name('admin');
 
 
-Route::get('/home', function(){
+Route::get('/', function(){
     return view('index');
 })->name('home');
 
@@ -18,3 +18,7 @@ Route::get('/tech', function(){
 Route::get('/sports', function(){
     return view('/sports/index');
 })->name('sports');
+
+Route::get('/politic', function(){
+    view('politics/index');
+})->name('politic');

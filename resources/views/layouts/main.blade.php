@@ -17,7 +17,7 @@
       <nav class="hidden md:flex space-x-6 text-sm font-medium">
         <a href="{{ route('home') }}" class="hover:text-red-600">Home</a>
         <a href="#world" class="hover:text-red-600">World</a>
-        <a href="#politics" class="hover:text-red-600">Politics</a>
+        <a href="{{ route('politic') }}" class="hover:text-red-600">Politics</a>
         <a href="{{ route('tech') }}" class="hover:text-red-600">Tech</a>
         <a href="{{ route('sports') }}" class="hover:text-red-600">Sports</a>
       </nav>
