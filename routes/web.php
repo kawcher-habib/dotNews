@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/admin', function () {
@@ -22,3 +23,5 @@ Route::get('/sports', function(){
 Route::get('/politic', function(){
     view('politics/index');
 })->name('politic');
+
+Route::get('/check', [HomeController::class, 'index']);
