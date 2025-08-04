@@ -1,20 +1,26 @@
 @extends('layouts.main')
 @section('content')
 
+    <div class="container mx-auto px-4 py-6">
+
+        @if (!empty($newsData) && count($newsData) > 0)
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach ($newsData as $news)
+                    <div class="border rounded-lg shadow p-4">
+                        <h2 class="text-xl font-bold mb-2">{{ $news['title'] ?? 'No Title' }}</h2>
+                        <p class="text-gray-700 mb-4">{{ $news['description'] ?? 'No description' }}</p>
+                        <a href="{{ $news['url'] ?? '#' }}" target="_blank" class="text-blue-500 underline">Read more</a>
+                    </div>
+                @endforeach
+            </div>
+        @else
+            <p class="text-gray-500">No news available.</p>
+        @endif
+
+    </div>
 
 
-  <!-- Hero Section -->
-  <section class="bg-white py-10">
-    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-    <div>
-      <h2 class="text-4xl font-bold mb-4">Breaking News: Tech Stocks Surge</h2>
-      <p class="text-gray-700 mb-6">dotNews delivers unbiased, reliable, and fast news from every corner of the world.
-      </p>
-      <a href="#" class="bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Explore More</a>
-    </div>
-    <img src="https://source.unsplash.com/600x400/?breaking-news" class="rounded-lg shadow" alt="Hero News" />
-    </div>
-  </section>
+
 
   <!-- Category News Teach -->
   <section class="py-10" id="tech">
