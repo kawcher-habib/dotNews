@@ -1,25 +1,6 @@
 @extends('layouts.main')
 @section('content')
 
-  <!-- <div class="container mx-auto px-4 py-6">
-
-      @if (!empty($newsData) && count($newsData) > 0)
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      @foreach ($newsData as $news)
-      <div class="border rounded-lg shadow p-4">
-        <h2 class="text-xl font-bold mb-2">{{ $news['title'] ?? 'No Title' }}</h2>
-        <p class="text-gray-700 mb-4">{{ $news['description'] ?? 'No description' }}</p>
-        <a href="{{ $news['url'] ?? '#' }}" target="_blank" class="text-blue-500 underline">Read more</a>
-      </div>
-      @endforeach
-      </div>
-      @else
-      <p class="text-gray-500">No news available.</p>
-      @endif
-
-    </div> -->
-
-
   <!-- Hero Section -->
   <section class="bg-white py-10">
 
