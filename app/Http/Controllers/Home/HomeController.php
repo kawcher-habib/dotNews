@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -25,13 +23,16 @@ class HomeController extends Controller
 
                 if (!empty($getData) && isset($getData['results'])) {
                     $data = $getData['results'];
-                    Cache::put('newData', $data, 600);
+                    Cache::put('newData', $data, 30);
                 } else {
                     return response()->json(['error' => 'Invalid or empty data'], 500);
                 }
 
             }
-           // return $data;
+
+            //     Cache::flush();
+
+            // return $data;
 
             return view('index', ['newsData'=> $data]);
 

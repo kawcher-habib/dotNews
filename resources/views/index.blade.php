@@ -24,16 +24,15 @@
 
 
   <!-- Category News Teach -->
-  <!-- <section class="py-10" id="tech"> -->
+  <section class="py-10" id="tech">
     <div class="max-w-7xl mx-auto px-4">
     <h3 class="text-2xl font-semibold mb-6 border-b pb-2">Latest in News</h3>
     <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
 
      @php 
-        $techNews = collect($newsData)
-                    ->where('category', 'general')
-                    ->values()
-                    ->slice(2, 3);
+        $techNews = collect($newsData)->filter(function($item){
+            return isset($item['category'][0]) && empty($item['category'][0] === 'top');
+        })
        
     @endphp
      
@@ -42,7 +41,7 @@
       <!-- Card  -->
     
       <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="{{ $news['image'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Tech" class="w-full h-48 object-cover" />
+        <img src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Tech" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h4 class="text-lg font-bold mb-2">{{ $news['title'] ?? "No title" }}</h4>
           <p class="text-sm text-gray-600">{{ $news['description'] ?? "No description"}}
@@ -54,62 +53,22 @@
   </div>
 
     <!-- Right-aligned "More" button -->
-    <!-- <div class="flex justify-end mt-6">
-      <a href="{{ route('tech') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
+    <div class="flex justify-end mt-6">
+      <a href="{{ route('tech') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a> <!-- here will be url change -->
     </div>
     </div>
-  </section> -->
+  </section>
 
   <!-- Category News Sports -->
-  <!-- <section class="py-10" id="sports">
+  <section class="py-10" id="sports">
     <div class="max-w-7xl mx-auto px-4">
       <h3 class="text-2xl font-semibold mb-6 border-b pb-2">Latest in Sports</h3>
-      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"> -->
-        <!-- Card 1 -->
-          <!-- @php 
-        $techNews = collect($newsData)
-                    ->where('category', 'general')
-                    ->values()
-                    ->slice(4, 3);
-       
-    @endphp
-     
-     @foreach ($techNews as $news) -->
-    
-      <!-- Card  -->
-    
-      <!-- <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="{{ $news['image'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Sport" class="w-full h-48 object-cover" />
-        <div class="p-4">
-          <h4 class="text-lg font-bold mb-2">{{ $news['title'] ?? "No title" }}</h4>
-          <p class="text-sm text-gray-600">{{ $news['description'] ?? "No description"}}
-          </p>
-        </div>
-      </div>
-     
-     @endforeach
-  </div>
-        
-      </div> -->
-
-      <!-- Right-aligned "More" button -->
-      <!-- <div class="flex justify-end mt-6">
-        <a href="{{ route('sports') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
-      </div>
-    </div>
-  </section> -->
-
-
-  <!-- Category News Politics -->
-  <!-- <section class="py-10" id="politic">
-    <div class="max-w-7xl mx-auto px-4">
-    <h3 class="text-2xl font-semibold mb-6 border-b pb-2">Latest in Politics</h3>
       <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            @php 
-        $techNews = collect($newsData)
-                    ->where('category', 'general')
-                    ->values()
-                    ->slice(7, 3);
+        <!-- Card 1 -->
+          @php 
+        $techNews = collect($newsData)->filter(function($item){
+                          return isset($item['category'][0]) && $item['category'][0] === 'sports' || isset($item['category'][0]) && $item['category'][0] === 'tourism';
+                    })
        
     @endphp
      
@@ -117,8 +76,8 @@
     
       <!-- Card  -->
     
-      <!-- <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
-        <img src="{{ $news['image'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Politics" class="w-full h-48 object-cover" />
+     <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
+        <img src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Sport" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h4 class="text-lg font-bold mb-2">{{ $news['title'] ?? "No title" }}</h4>
           <p class="text-sm text-gray-600">{{ $news['description'] ?? "No description"}}
@@ -129,13 +88,51 @@
      @endforeach
   </div>
         
-      </div> -->
+      </div>
+
+      <!-- Right-aligned "More" button -->
+      <div class="flex justify-end mt-6">
+        <a href="{{ route('sports') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Category News Politics -->
+ <section class="py-10" id="politic">
+    <div class="max-w-7xl mx-auto px-4">
+    <h3 class="text-2xl font-semibold mb-6 border-b pb-2">Latest in Technology</h3>
+      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            @php 
+        $techNews = collect($newsData)->filter(function($item){
+              return isset($item['category'][0]) && $item['category'][0] === 'technology' || isset($item['category'][0]) && $item['category'][0] === 'tourism';
+        })
+       
+    @endphp
+     
+     @foreach ($techNews as $news)
+    
+      <!-- Card  -->
+    
+      <div class="bg-white rounded-lg shadow hover:shadow-lg transition">
+        <img src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Politics" class="w-full h-48 object-cover" />
+        <div class="p-4">
+          <h4 class="text-lg font-bold mb-2">{{ $news['title'] ?? "No title" }}</h4>
+          <p class="text-sm text-gray-600">{{ $news['description'] ?? "No description"}}
+          </p>
+        </div>
+      </div>
+     
+     @endforeach
+  </div>
+        
+      </div>
 
     <!-- Right-aligned "More" button -->
-    <!-- <div class="flex justify-end mt-6">
-      <a href="{{ route('sports') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
+    <div class="flex justify-end mt-6">
+      <a href="{{ route('tech') }}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">More</a>
     </div>
     </div>
-  </section> -->
+  </section>
 
 @endsection
