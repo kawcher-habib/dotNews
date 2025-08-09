@@ -2,7 +2,7 @@
 
 @section('content')
 
-      <section class="relative h-[80vh] bg-cover bg-center" style="background-image: url('{{ $newsData[0]['image'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400'}}');">
+      <section class="relative h-[80vh] bg-cover bg-center" style="background-image: url('{{ $newsData[0]['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400'}}');">
       <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
       <div class="relative z-10 flex items-center justify-center h-full px-6 text-center text-white">
@@ -31,7 +31,7 @@
                 <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
                     <!-- Image -->
                     <img 
-                        src="{{ $news['image'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" 
+                        src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" 
                         alt="{{ $news['title'] ?? 'News Image' }}" 
                         class="w-full h-48 object-cover" 
                     />
