@@ -9,7 +9,7 @@
         <div>
           <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ $newsData[0]['title'] ?? 'No title'}}</h1>
           <p class="text-lg md:text-xl max-w-2xl mx-auto">{{ $newsData[0]['description'] ?? 'No description' }}</p>
-          <a href="#explore" class="mt-6 inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded text-lg transition">
+          <a href="{{ $newsData[0]['link'] }}" class="mt-6 inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded text-lg transition">
             Explore Tech News
           </a>
         </div>
@@ -49,7 +49,7 @@
                     <!-- Read More Button -->
                     <div class="px-4 pb-4 mt-auto flex justify-end">
                         <a 
-                            href="{{ $news['url'] ?? '#' }}" 
+                            href="{{ $news['link'] ?? '#' }}" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"

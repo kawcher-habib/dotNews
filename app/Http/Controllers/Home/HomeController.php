@@ -34,7 +34,7 @@ class HomeController extends Controller
 
                 if (!empty($getData) && isset($getData['results'])) {
                     $data = $getData['results'];
-                    Cache::put('newsData', $data, 30);
+                    Cache::put('newsData', $data, 600);
                 } else {
                     return response()->json(['error' => 'Invalid or empty data'], 500);
                 }

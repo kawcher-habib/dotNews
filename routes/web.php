@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Sports\SportsController;
 use App\Http\Controllers\Tech\TechController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
@@ -14,9 +15,7 @@ Route::get('/',[HomeController::class, 'index'])->name('home');
 
 Route::get('/tech', [TechController::class, 'index'])->name('tech');
 
-Route::get('/sports', function(){
-    return view('/sports/index');
-})->name('sports');
+Route::get('/sports', [SportsController::class, 'index'])->name('sports');
 
 Route::get('/politic', function(){
     view('politics/index');
