@@ -1,8 +1,64 @@
 @extends('layouts.main')
 @section('content')
 
+ <section class="relative bg-white py-10 overflow-hidden">
+
+    @if(!empty($newsData) && count($newsData) > 0)
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+            <h2 class="text-4xl font-bold mb-4">{{ $newsData[0]['title'] ?? 'No title' }}</h2>
+            <p class="text-gray-700 mb-6">{{ $newsData[0]['description'] ?? 'No description' }}</p>
+            <a href="{{ $newsData[0]['link'] }}" target="_blank"
+               class="inline-block bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Read More</a>
+        </div>
+        <img src="{{ $newsData[0]['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}"
+             alt="News" class="rounded-lg shadow" />
+    </div>
+    @else
+        <p class="text-gray-500">No news available.</p>
+    @endif
+
+    <!-- Weather Popup (Sliding) -->
+    <div id="weatherPopup"
+         class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-xl rounded-lg w-72 p-4 z-20 border 
+                transform translate-x-full transition-transform duration-500 ease-out">
+        <div class="flex items-center justify-between border-b pb-2 mb-3">
+            <h2 class="text-xl font-bold">Today's Weather</h2>
+            <button onclick="closeWeather()" class="text-gray-500 hover:text-red-500">&times;</button>
+        </div>
+        <div class="flex items-center gap-4">
+            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon" class="w-16 h-16">
+            <div>
+                <p class="text-2xl font-semibold">28°C</p>
+                <p class="text-gray-600">Sunny</p>
+                <p class="text-sm text-gray-500">Dhaka, Bangladesh</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>
+    // Show weather after small delay
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            document.getElementById("weatherPopup").classList.remove("translate-x-full");
+        }, 500);
+    });
+
+    // Close popup with slide out
+    function closeWeather() {
+        document.getElementById("weatherPopup").classList.add("translate-x-full");
+    }
+</script>
+
+
+
+
+
+
   <!-- Hero Section -->
-  <section class="bg-white py-10">
+  <!-- <section class="bg-white py-10">
 
     @if(!empty($newsData) && count($newsData) > 0)
 
@@ -19,7 +75,7 @@
     @else
     <p class="text-gray-500">No news available.</p>
     @endif
-  </section>
+  </section> -->
 
 
 

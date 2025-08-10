@@ -17,7 +17,7 @@ class HomeController extends Controller
                 $data = Cache::get('newsData');
 
             } else {
-                $apiKey = config('services.newsdata.key'); /** API Key From Services  */
+                $apiKey = config('services.newsdata.key'); /** API Key From Services by .env  */
 
 
                 $response = Http::get(
