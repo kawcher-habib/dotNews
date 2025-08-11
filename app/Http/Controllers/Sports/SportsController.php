@@ -1,30 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Tech;
+namespace App\Http\Controllers\Sports;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
-class TechController extends Controller
+class SportsController extends Controller
 {
-
     public function index()
     {
+
         try {
-          
-
             if (Cache::has('newsData')) {
-
                 $getData = Cache::get('newsData');
-
-
-                return view('tech/index', ['newsData' => $getData]);
+                return view('sports/index', ['newsData' => $getData]);
             }
-
-        } catch (\Exception $e) {
-            return response()->json([$e->getMessage()], 500);
+            
+        } catch (\Throwable $th) {
+            return response()->json(['error' => $th->getMessage()], 500);
         }
     }
 }
