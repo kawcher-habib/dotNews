@@ -27,11 +27,11 @@
             <button onclick="closeWeather()" class="text-gray-500 hover:text-red-500">&times;</button>
         </div>
         <div class="flex items-center gap-4">
-            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon" class="w-16 h-16">
+            <img src="{{ $weatherData['current']['condition']['icon'] ?? 'https://openweathermap.org/img/wn/01d@2x.png'}}" alt="Weather Icon" class="w-16 h-16">
             <div>
-                <p class="text-2xl font-semibold">28°C</p>
-                <p class="text-gray-600">Sunny</p>
-                <p class="text-sm text-gray-500">Dhaka, Bangladesh</p>
+                <p class="text-2xl font-semibold">{{ $weatherData['current']['temp_c'].'°C' ?? '20'}}</p>
+                <p class="text-gray-600">{{ $weatherData['current']['condition']['text'] ?? "Sunny"}}</p>
+                <p class="text-sm text-gray-500">{{ $weatherData['location']['name'].' ,'. $weatherData['location']['country'] ?? "Dhaka, Bangladesh" }}</p>
             </div>
         </div>
     </div>

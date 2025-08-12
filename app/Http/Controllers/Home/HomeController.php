@@ -33,8 +33,10 @@ class HomeController extends Controller
                 // return $getData;
 
                 if (!empty($getData) && isset($getData['results'])) {
+
                     $data = $getData['results'];
                     Cache::put('newsData', $data, 600);
+
                 } else {
                     return response()->json(['error' => 'Invalid or empty data'], 500);
                 }
@@ -45,9 +47,45 @@ class HomeController extends Controller
 
             // return $data;
 
-            return view('index', ['newsData' => $data]);
+            /**weather api */
+
+            $weatherApiKey = config('services.weather.key');
+            $weatherBaseUrl = config('services.weather.url');
+
+            $responseFromWeatherApi = Http::get("$weatherBaseUrl/current.json?key=$weatherApiKey&q=Dhaka");
+
+            if (!empty($responseFromWeatherApi)) {
+                    $weatherData = $responseFromWeatherApi->json();
+            }else{
+                /**error message */
+            }
+
+            return view('index', ['newsData' => $data, 'weatherData'=> $weatherData]);
 
         } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+
+    }
+
+    public function checker()
+    {
+
+        try {
+            $weatherApiKey = config('services.weather.key');
+            $weatherBaseUrl = config('services.weather.url');
+
+            $responseFromWeatherApi = Http::get("$weatherBaseUrl/current.json?key=$weatherApiKey&q=Dhaka");
+
+            if (!empty($responseFromWeatherApi)) {
+
+                return $responseFromWeatherApi->json();
+
+            } else {
+                return response()->json(['error' => "Data not found"], 500);
+            }
+        } catch (\Throwable $e) {
+
             return response()->json(['error' => $e->getMessage()], 500);
         }
 

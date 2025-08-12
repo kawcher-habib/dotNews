@@ -21,7 +21,7 @@ Route::get('/politic', function(){
     view('politics/index');
 })->name('politic');
 
-Route::get('/check', [HomeController::class, 'index']);
+Route::get('/check', [HomeController::class, 'checker']);
 
 Route::get('/test-redis', function(){
     // Cache::put('foo', 'bar', 60);
