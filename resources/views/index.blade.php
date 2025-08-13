@@ -15,7 +15,7 @@
              alt="News" class="rounded-lg shadow" />
     </div>
     @else
-        <p class="text-gray-500">No news available.</p>
+        <p class="text-gray-500">No news available. refresh again</p>
     @endif
 
     <!-- Weather Popup (Sliding) -->

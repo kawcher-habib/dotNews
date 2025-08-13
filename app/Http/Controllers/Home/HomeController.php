@@ -55,6 +55,7 @@ class HomeController extends Controller
             $responseFromWeatherApi = Http::get("$weatherBaseUrl/current.json?key=$weatherApiKey&q=Dhaka");
 
             if (!empty($responseFromWeatherApi)) {
+                
                     $weatherData = $responseFromWeatherApi->json();
             }else{
                 /**error message */
