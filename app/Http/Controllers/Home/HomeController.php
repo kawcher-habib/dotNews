@@ -76,7 +76,7 @@ class HomeController extends Controller
             $weatherApiKey = config('services.weather.key');
             $weatherBaseUrl = config('services.weather.url');
 
-            $responseFromWeatherApi = Http::get("$weatherBaseUrl/current.json?key=$weatherApiKey&q=Dhaka");
+            $responseFromWeatherApi = Http::get("https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard");
 
             if (!empty($responseFromWeatherApi)) {
 
