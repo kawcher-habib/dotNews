@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
 
 
@@ -39,7 +40,8 @@ class HomeController extends Controller
                     Cache::put('newsData', $data, 600);
 
                 } else {
-                    return response()->json(['error' => 'Invalid or empty data'], 500);
+                    Log::info('error:', ['Invalid or empty data']);
+                    return view('errors.404');
                 }
 
             }
