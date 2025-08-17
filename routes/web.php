@@ -25,5 +25,6 @@ Route::get('/check', [HomeController::class, 'checker']);
 
 Route::get('/test-redis', function(){
     // Cache::put('foo', 'bar', 60);
-    return Cache::get('newData');
+    // return Cache::get('newData');
+    throw new \Exception("Testing global error handler");
 });
