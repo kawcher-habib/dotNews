@@ -1,15 +1,15 @@
-@extends('layouts.main');
+@extends('layouts.main')
 
 @section('content')
 
-      <section class="relative h-[80vh] bg-cover bg-center" style="background-image: url('{{ $newsData[0]['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400'}}');">
+      <section class="relative h-[80vh] bg-cover bg-center" style="background-image: url('{{ $newsData[0]['images'][0]['url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400'}}');">
       <div class="absolute inset-0 bg-black bg-opacity-60"></div>
 
       <div class="relative z-10 flex items-center justify-center h-full px-6 text-center text-white">
         <div>
-          <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ $newsData[0]['title'] ?? 'No title'}}</h1>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4">{{ $newsData[0]['headline'] ?? 'No title'}}</h1>
           <p class="text-lg md:text-xl max-w-2xl mx-auto">{{ $newsData[0]['description'] ?? 'No description' }}</p>
-          <a href="{{ $newsData[0]['link'] }}" class="mt-6 inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded text-lg transition">
+          <a href="{{ $newsData[0]['images'][0]['url'] }}" class="mt-6 inline-block bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded text-lg transition">
             Explore Sports News
           </a>
         </div>
@@ -31,15 +31,15 @@
                 <article class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden flex flex-col">
                     <!-- Image -->
                     <img 
-                        src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" 
-                        alt="{{ $news['title'] ?? 'News Image' }}" 
+                        src="{{ $news['images'][0]['url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" 
+                        alt="{{ $news['images'][0]['type'] ?? 'News Image' }}" 
                         class="w-full h-48 object-cover" 
                     />
 
                     <!-- Content -->
                     <div class="p-4 flex-grow">
                         <h3 class="text-lg font-bold mb-2">
-                            {{ $news['title'] ?? 'No title available' }}
+                            {{ $news['headline'] ?? 'No title available' }}
                         </h3>
                         <p class="text-sm text-gray-600">
                             {{ $news['description'] ?? 'No description provided.' }}
@@ -49,7 +49,7 @@
                     <!-- Read More Button -->
                     <div class="px-4 pb-4 mt-auto flex justify-end">
                         <a 
-                            href="{{ $news['link'] ?? '#' }}" 
+                            href="{{ $news['images'][0]['url'] ?? '#' }}" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"

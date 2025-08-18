@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Stevebauman\Location\Facades\Location;
 
 
 class HomeController extends Controller
@@ -33,15 +35,32 @@ class HomeController extends Controller
              
 
                 if (!empty($getData) && isset($getData['results'])) {
+
                     $data = $getData['results'];
                     Cache::put('newsData', $data, 600);
+
                 } else {
-                    return response()->json(['error' => 'Invalid or empty data'], 500);
+                    Log::info('error:', ['Invalid or empty data']);
+                    return view('errors.404');
                 }
 
             }
 
-            return view('index', ['newsData' => $data]);
+
+            $weatherApiKey = config('services.weather.key');
+            $weatherBaseUrl = config('services.weather.url');
+
+            $responseFromWeatherApi = Http::get("$weatherBaseUrl/current.json?key=$weatherApiKey&q=Dhaka");
+
+            if (!empty($responseFromWeatherApi)) {
+
+                $weatherData = $responseFromWeatherApi->json();
+            } else {
+                Log::info('error', ['Invalid or empty data']);
+                $weatherData = [];
+            }
+
+            return view('index', ['newsData' => $data, 'weatherData' => $weatherData]);
 
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

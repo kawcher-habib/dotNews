@@ -13,11 +13,20 @@ class SportsController extends Controller
     {
 
         try {
-            if (Cache::has('newsData')) {
-                $getData = Cache::get('newsData');
-                return view('sports/index', ['newsData' => $getData]);
+            if (Cache::has('sportsData')) {
+                $getData = Cache::get('sportsData');
+            } {
+                $response = Http::get('https://site.api.espn.com/apis/site/v2/sports/football/nfl/news');
+                if (!empty($response)) {
+                    $getData = $response['articles'];
+                    Cache::put('sportsData', $getData, 600);
+                }
+
             }
-            
+           
+            return view('sports/index', ['newsData' => $getData]);
+
+
         } catch (\Throwable $th) {
             return response()->json(['error' => $th->getMessage()], 500);
         }

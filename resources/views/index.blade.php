@@ -7,7 +7,7 @@
     <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <div>
             <h2 class="text-4xl font-bold mb-4">{{ $newsData[0]['title'] ?? 'No title' }}</h2>
-            <p class="text-gray-700 mb-6">{{ $newsData[0]['description'] ?? 'No description' }}</p>
+            <p class="text-gray-700 mb-6">{{ substr($newsData[0]['description'], 0, 150) ?? 'No description' }}</p>
             <a href="{{ $newsData[0]['link'] }}" target="_blank"
                class="inline-block bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700">Read More</a>
         </div>
@@ -15,7 +15,7 @@
              alt="News" class="rounded-lg shadow" />
     </div>
     @else
-        <p class="text-gray-500">No news available.</p>
+        <p class="text-gray-500">No news available. refresh again</p>
     @endif
 
     <!-- Weather Popup (Sliding) -->
@@ -27,11 +27,11 @@
             <button onclick="closeWeather()" class="text-gray-500 hover:text-red-500">&times;</button>
         </div>
         <div class="flex items-center gap-4">
-            <img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Weather Icon" class="w-16 h-16">
+            <img src="{{ $weatherData['current']['condition']['icon'] ?? 'https://openweathermap.org/img/wn/01d@2x.png'}}" alt="Weather Icon" class="w-16 h-16">
             <div>
-                <p class="text-2xl font-semibold">28°C</p>
-                <p class="text-gray-600">Sunny</p>
-                <p class="text-sm text-gray-500">Dhaka, Bangladesh</p>
+                <p class="text-2xl font-semibold">{{ $weatherData['current']['temp_c'].'°C' ?? '20'}}</p>
+                <p class="text-gray-600">{{ $weatherData['current']['condition']['text'] ?? "Sunny"}}</p>
+                <p class="text-sm text-gray-500">{{ $weatherData['location']['name'].' ,'. $weatherData['location']['country'] ?? "Dhaka, Bangladesh" }}</p>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
         <img src="{{ $news['image_url'] ?? 'https://ui-avatars.com/api/?name=No+Image&size=400' }}" alt="Tech" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h4 class="text-lg font-bold mb-2">{{ $news['title'] ?? "No title" }}</h4>
-          <p class="text-sm text-gray-600">{{ $news['description'] ?? "No description"}}
+          <p class="text-sm text-gray-600">{{ substr($news['description'], 0, 150) ?? "No description"}}
           </p>
         </div>
       </div>

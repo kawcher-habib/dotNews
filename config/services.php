@@ -37,6 +37,11 @@ return [
 
     'newsdata' =>[
         'key'=> env('NEWSDATA_API_KEY'),
+        'url'=> env('NEWSDATA_BASE_URL')
+    ],
+    'weather' =>[
+        'key' => env('WEATHER_API_KEY'),
+        'url' => env('WEATHER_BASE_URL')
     ]
 
 ];
