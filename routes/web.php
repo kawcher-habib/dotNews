@@ -21,6 +21,10 @@ Route::get('/politic', function(){
     view('politics/index');
 })->name('politic');
 
+Route::fallback(function(){
+    return response()->view('errors.404', [], 404);
+});
+
 Route::get('/check', [HomeController::class, 'checker']);
 
 Route::get('/test-redis', function(){
