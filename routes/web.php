@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Sports\SportsController;
 use App\Http\Controllers\Tech\TechController;
@@ -21,6 +22,12 @@ Route::get('/politic', function(){
     view('politics/index');
 })->name('politic');
 
+Route::get('/admin', [AdminController::class, 'index']);
+
+
+
+
+
 Route::fallback(function(){
     return response()->view('errors.404', [], 404);
 });
@@ -32,3 +39,11 @@ Route::get('/test-redis', function(){
     // return Cache::get('newData');
     throw new \Exception("Testing global error handler");
 });
+
+
+
+
+
+
+
+
