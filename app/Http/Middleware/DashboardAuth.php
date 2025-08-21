@@ -17,7 +17,8 @@ class DashboardAuth
     {
         $isRegistration = false;
         if(!$isRegistration){
-            return redirect('reg');
+           return redirect()->route('reg');
+            // return redirect('register');
         }
 
         return $next($request);
